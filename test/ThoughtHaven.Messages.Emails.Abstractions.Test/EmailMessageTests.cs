@@ -93,7 +93,8 @@ namespace ThoughtHaven.Messages.Emails
                     var message = new EmailMessage(from: new EmailContact("from@email.com"),
                         to: to, subject: "subject", content: EmailContent.PlainText("value"));
 
-                    Assert.Equal(to, message.To);
+                    Assert.Single(message.To);
+                    Assert.Equal(to, message.To[0]);
                 }
 
                 [Fact]
@@ -127,9 +128,11 @@ namespace ThoughtHaven.Messages.Emails
                 {
                     Assert.Throws<ArgumentNullException>("from", () =>
                     {
-                        new EmailMessage(from: null, to: new EmailContact("to@email.com"),
-                            subject: "subject", contents: new EmailContent[]
-                            { EmailContent.PlainText("value") });
+                        new EmailMessage(
+                            from: null,
+                            to: new EmailContact[] { new EmailContact("to@email.com") },
+                            subject: "subject",
+                            contents: new EmailContent[] { EmailContent.PlainText("value") });
                     });
                 }
 
@@ -138,9 +141,37 @@ namespace ThoughtHaven.Messages.Emails
                 {
                     Assert.Throws<ArgumentNullException>("to", () =>
                     {
-                        new EmailMessage(from: new EmailContact("from@email.com"), to: null,
-                            subject: "subject", contents: new EmailContent[]
-                            { EmailContent.PlainText("value") });
+                        new EmailMessage(
+                            from: new EmailContact("from@email.com"),
+                            to: null,
+                            subject: "subject",
+                            contents: new EmailContent[] { EmailContent.PlainText("value") });
+                    });
+                }
+
+                [Fact]
+                public void ToWithNoItems_Throws()
+                {
+                    Assert.Throws<ArgumentException>("to", () =>
+                    {
+                        new EmailMessage(
+                            from: new EmailContact("from@email.com"),
+                            to: new EmailContact[] { null },
+                            subject: "subject",
+                            contents: new EmailContent[0]);
+                    });
+                }
+
+                [Fact]
+                public void ToWithNullItem_Throws()
+                {
+                    Assert.Throws<ArgumentException>("to", () =>
+                    {
+                        new EmailMessage(
+                            from: new EmailContact("from@email.com"),
+                            to: new EmailContact[] { null },
+                            subject: "subject",
+                            contents: new EmailContent[] { EmailContent.PlainText("value") });
                     });
                 }
 
@@ -149,8 +180,10 @@ namespace ThoughtHaven.Messages.Emails
                 {
                     Assert.Throws<ArgumentNullException>("subject", () =>
                     {
-                        new EmailMessage(from: new EmailContact("from@email.com"),
-                            to: new EmailContact("to@email.com"), subject: null,
+                        new EmailMessage(
+                            from: new EmailContact("from@email.com"),
+                            to: new EmailContact[] { new EmailContact("to@email.com") },
+                            subject: null,
                             contents: new EmailContent[] { EmailContent.PlainText("value") });
                     });
                 }
@@ -160,8 +193,10 @@ namespace ThoughtHaven.Messages.Emails
                 {
                     Assert.Throws<ArgumentException>("subject", () =>
                     {
-                        new EmailMessage(from: new EmailContact("from@email.com"),
-                            to: new EmailContact("to@email.com"), subject: "",
+                        new EmailMessage(
+                            from: new EmailContact("from@email.com"),
+                            to: new EmailContact[] { new EmailContact("to@email.com") },
+                            subject: "",
                             contents: new EmailContent[] { EmailContent.PlainText("value") });
                     });
                 }
@@ -171,8 +206,10 @@ namespace ThoughtHaven.Messages.Emails
                 {
                     Assert.Throws<ArgumentException>("subject", () =>
                     {
-                        new EmailMessage(from: new EmailContact("from@email.com"),
-                            to: new EmailContact("to@email.com"), subject: " ",
+                        new EmailMessage(
+                            from: new EmailContact("from@email.com"),
+                            to: new EmailContact[] { new EmailContact("to@email.com") },
+                            subject: " ",
                             contents: new EmailContent[] { EmailContent.PlainText("value") });
                     });
                 }
@@ -182,8 +219,10 @@ namespace ThoughtHaven.Messages.Emails
                 {
                     Assert.Throws<ArgumentNullException>("contents", () =>
                     {
-                        new EmailMessage(from: new EmailContact("from@email.com"),
-                            to: new EmailContact("to@email.com"), subject: "subject",
+                        new EmailMessage(
+                            from: new EmailContact("from@email.com"),
+                            to: new EmailContact[] { new EmailContact("to@email.com") },
+                            subject: "subject",
                             contents: null);
                     });
                 }
@@ -194,8 +233,8 @@ namespace ThoughtHaven.Messages.Emails
                     Assert.Throws<ArgumentException>("contents", () =>
                     {
                         new EmailMessage(from: new EmailContact("from@email.com"),
-                            to: new EmailContact("to@email.com"), subject: "subject",
-                            contents: new EmailContent[0]);
+                            to: new EmailContact[] { new EmailContact("to@email.com") },
+                            subject: "subject", contents: new EmailContent[0]);
                     });
                 }
 
@@ -205,8 +244,8 @@ namespace ThoughtHaven.Messages.Emails
                     Assert.Throws<ArgumentException>("contents", () =>
                     {
                         new EmailMessage(from: new EmailContact("from@email.com"),
-                            to: new EmailContact("to@email.com"), subject: "subject",
-                            contents: new EmailContent[] { null });
+                            to: new EmailContact[] { new EmailContact("to@email.com") },
+                            subject: "subject", contents: new EmailContent[] { null });
                     });
                 }
 
@@ -216,7 +255,7 @@ namespace ThoughtHaven.Messages.Emails
                     var from = new EmailContact("from@email.com");
 
                     var message = new EmailMessage(from: from,
-                        to: new EmailContact("to@email.com"),
+                        to: new EmailContact[] { new EmailContact("to@email.com") },
                         subject: "subject", contents: new EmailContent[]
                         { EmailContent.PlainText("value") });
 
@@ -226,7 +265,7 @@ namespace ThoughtHaven.Messages.Emails
                 [Fact]
                 public void ValidTo_SetsTo()
                 {
-                    var to = new EmailContact("to@email.com");
+                    var to = new EmailContact[] { new EmailContact("to@email.com") };
 
                     var message = new EmailMessage(from: new EmailContact("from@email.com"),
                         to: to, subject: "subject", contents: new EmailContent[]
@@ -239,7 +278,8 @@ namespace ThoughtHaven.Messages.Emails
                 public void ValidSubject_SetsSubject()
                 {
                     var message = new EmailMessage(from: new EmailContact("from@email.com"),
-                        to: new EmailContact("to@email.com"), subject: "subject",
+                        to: new EmailContact[] { new EmailContact("to@email.com") },
+                        subject: "subject",
                         contents: new EmailContent[] { EmailContent.PlainText("value") });
 
                     Assert.Equal("subject", message.Subject);
@@ -251,8 +291,8 @@ namespace ThoughtHaven.Messages.Emails
                     var contents = new EmailContent[] { EmailContent.PlainText("value") };
 
                     var message = new EmailMessage(from: new EmailContact("from@email.com"),
-                        to: new EmailContact("to@email.com"), subject: "subject",
-                        contents: contents);
+                        to: new EmailContact[] { new EmailContact("to@email.com") },
+                        subject: "subject", contents: contents);
 
                     Assert.Equal(contents, message.Contents);
                 }

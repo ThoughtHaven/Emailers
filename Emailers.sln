@@ -9,7 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F4FAAC38-A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThoughtHaven.Messages.Emails.Abstractions", "src\ThoughtHaven.Messages.Emails.Abstractions\ThoughtHaven.Messages.Emails.Abstractions.csproj", "{58FC1621-58C2-4C51-93D7-BC599BBB9041}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThoughtHaven.Messages.Emails.Abstractions.Tests", "test\ThoughtHaven.Messages.Emails.Abstractions.Tests\ThoughtHaven.Messages.Emails.Abstractions.Tests.csproj", "{407BB104-D085-4957-8F76-09D4AC478CF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThoughtHaven.Messages.Emails.SendGrid", "src\ThoughtHaven.Messages.Emails.SendGrid\ThoughtHaven.Messages.Emails.SendGrid.csproj", "{47DEF4E3-BDF8-4407-9078-72192A5398EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThoughtHaven.Messages.Emails.SendGrid.Test", "test\ThoughtHaven.Messages.Emails.SendGrid.Test\ThoughtHaven.Messages.Emails.SendGrid.Test.csproj", "{6ED6B0D4-9B4D-4CB9-B02C-E4023FF34834}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThoughtHaven.Messages.Emails.Abstractions.Test", "test\ThoughtHaven.Messages.Emails.Abstractions.Test\ThoughtHaven.Messages.Emails.Abstractions.Test.csproj", "{39D02601-C54B-479E-8B03-8F9A31BB1932}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,17 +25,27 @@ Global
 		{58FC1621-58C2-4C51-93D7-BC599BBB9041}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58FC1621-58C2-4C51-93D7-BC599BBB9041}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58FC1621-58C2-4C51-93D7-BC599BBB9041}.Release|Any CPU.Build.0 = Release|Any CPU
-		{407BB104-D085-4957-8F76-09D4AC478CF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{407BB104-D085-4957-8F76-09D4AC478CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{407BB104-D085-4957-8F76-09D4AC478CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{407BB104-D085-4957-8F76-09D4AC478CF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47DEF4E3-BDF8-4407-9078-72192A5398EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47DEF4E3-BDF8-4407-9078-72192A5398EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47DEF4E3-BDF8-4407-9078-72192A5398EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47DEF4E3-BDF8-4407-9078-72192A5398EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ED6B0D4-9B4D-4CB9-B02C-E4023FF34834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED6B0D4-9B4D-4CB9-B02C-E4023FF34834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED6B0D4-9B4D-4CB9-B02C-E4023FF34834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED6B0D4-9B4D-4CB9-B02C-E4023FF34834}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39D02601-C54B-479E-8B03-8F9A31BB1932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39D02601-C54B-479E-8B03-8F9A31BB1932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39D02601-C54B-479E-8B03-8F9A31BB1932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39D02601-C54B-479E-8B03-8F9A31BB1932}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{58FC1621-58C2-4C51-93D7-BC599BBB9041} = {1D3AE79D-27B0-4449-B91F-005B5BE39B9A}
-		{407BB104-D085-4957-8F76-09D4AC478CF8} = {F4FAAC38-A595-4FA6-86BA-577788B3A1BA}
+		{47DEF4E3-BDF8-4407-9078-72192A5398EB} = {1D3AE79D-27B0-4449-B91F-005B5BE39B9A}
+		{6ED6B0D4-9B4D-4CB9-B02C-E4023FF34834} = {F4FAAC38-A595-4FA6-86BA-577788B3A1BA}
+		{39D02601-C54B-479E-8B03-8F9A31BB1932} = {F4FAAC38-A595-4FA6-86BA-577788B3A1BA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F65BFAA9-DB5F-403F-AA5D-39FF0F8F0B87}

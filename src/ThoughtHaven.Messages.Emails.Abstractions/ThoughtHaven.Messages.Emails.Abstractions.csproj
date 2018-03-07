@@ -8,6 +8,7 @@
     <Product>Thought Haven Messages Emails Abstractions</Product>
     <Description>Thought Haven abstractions for email messages and services.</Description>
     <Copyright>© Thought Haven. All rights reserved.</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
