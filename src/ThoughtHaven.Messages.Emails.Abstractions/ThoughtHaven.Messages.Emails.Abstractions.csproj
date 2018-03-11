@@ -9,6 +9,7 @@
     <Description>Thought Haven abstractions for email messages and services.</Description>
     <Copyright>© Thought Haven. All rights reserved.</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.100.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
