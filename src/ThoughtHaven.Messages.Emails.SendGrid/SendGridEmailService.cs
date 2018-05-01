@@ -7,15 +7,11 @@ namespace ThoughtHaven.Messages.Emails.SendGrid
 {
     public class SendGridEmailService : IEmailService
     {
-        protected SendGridClient Client { get; }
+        protected SendGridOptions Options { get; }
 
-        public SendGridEmailService(string apiKey)
-            : this(new SendGridClient(apiKey: Guard.NullOrWhiteSpace(nameof(apiKey), apiKey)))
-        { }
-
-        protected SendGridEmailService(SendGridClient client)
+        public SendGridEmailService(SendGridOptions options)
         {
-            this.Client = Guard.Null(nameof(client), client);
+            this.Options = Guard.Null(nameof(options), options);
         }
 
         public async Task Send(EmailMessage message)
@@ -36,12 +32,16 @@ namespace ThoughtHaven.Messages.Emails.SendGrid
                 email.AddContent(content.Type, content.Value);
             }
 
-            var response = await this.Client.SendEmailAsync(email).ConfigureAwait(false);
+            var response = await this.CreateClient().SendEmailAsync(email)
+                .ConfigureAwait(false);
 
             if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 300)
             {
                 throw new Exception($"Failed to send email message via SendGrid. Status Code: {(int)response.StatusCode}. Message: {await response.Body.ReadAsStringAsync()}");
             }
         }
+
+        protected virtual SendGridClient CreateClient() =>
+            new SendGridClient(this.Options.ApiKey);
     }
 }

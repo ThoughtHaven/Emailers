@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public class AddSendGridMethod
         {
-            public class ServicesAndApiKeyOverload
+            public class ServicesAndOptionsOverload
             {
                 [Fact]
                 public void NullServices_Throws()
@@ -18,34 +18,16 @@ namespace Microsoft.Extensions.DependencyInjection
 
                     Assert.Throws<ArgumentNullException>("services", () =>
                     {
-                        services.AddSendGrid("key");
+                        services.AddSendGrid(Options());
                     });
                 }
 
                 [Fact]
-                public void NullApiKey_Throws()
+                public void NullOptions_Throws()
                 {
-                    Assert.Throws<ArgumentNullException>("apiKey", () =>
+                    Assert.Throws<ArgumentNullException>("options", () =>
                     {
-                        new ServiceCollection().AddSendGrid(apiKey: null);
-                    });
-                }
-
-                [Fact]
-                public void EmptyApiKey_Throws()
-                {
-                    Assert.Throws<ArgumentException>("apiKey", () =>
-                    {
-                        new ServiceCollection().AddSendGrid(apiKey: "");
-                    });
-                }
-
-                [Fact]
-                public void WhiteSpaceApiKey_Throws()
-                {
-                    Assert.Throws<ArgumentException>("apiKey", () =>
-                    {
-                        new ServiceCollection().AddSendGrid(apiKey: " ");
+                        new ServiceCollection().AddSendGrid(options: null);
                     });
                 }
 
@@ -54,7 +36,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 {
                     var services = new ServiceCollection();
 
-                    services.AddSendGrid("key");
+                    services.AddSendGrid(Options());
 
                     var service = services.BuildServiceProvider()
                         .GetRequiredService<IEmailService>();
@@ -68,11 +50,13 @@ namespace Microsoft.Extensions.DependencyInjection
                 {
                     var services = new ServiceCollection();
 
-                    var result = services.AddSendGrid("key");
+                    var result = services.AddSendGrid(Options());
 
                     Assert.Equal(services, result);
                 }
             }
         }
+
+        private static SendGridOptions Options() => new SendGridOptions("key");
     }
 }

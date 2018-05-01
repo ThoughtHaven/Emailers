@@ -8,7 +8,7 @@
     <Product>Thought Haven Messages Emails SendGrid</Product>
     <Description>A SendGrid implementation of Thought Haven's email service abstractions.</Description>
     <Copyright>© Thought Haven. All rights reserved.</Copyright>
-    <Version>0.101.0</Version>
+    <Version>0.102.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

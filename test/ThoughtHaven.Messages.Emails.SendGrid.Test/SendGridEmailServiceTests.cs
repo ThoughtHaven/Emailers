@@ -11,32 +11,14 @@ namespace ThoughtHaven.Messages.Emails.SendGrid
     {
         public class Constructor
         {
-            public class ApiKeyOverload
+            public class OptionsOverload
             {
                 [Fact]
-                public void NullApiKey_Throws()
+                public void NullOptions_Throws()
                 {
-                    Assert.Throws<ArgumentNullException>("apiKey", () =>
+                    Assert.Throws<ArgumentNullException>("options", () =>
                     {
-                        new SendGridEmailService(apiKey: null);
-                    });
-                }
-
-                [Fact]
-                public void EmptyApiKey_Throws()
-                {
-                    Assert.Throws<ArgumentException>("apiKey", () =>
-                    {
-                        new SendGridEmailService(apiKey: "");
-                    });
-                }
-
-                [Fact]
-                public void WhiteSpaceApiKey_Throws()
-                {
-                    Assert.Throws<ArgumentException>("apiKey", () =>
-                    {
-                        new SendGridEmailService(apiKey: " ");
+                        new SendGridEmailService(options: null);
                     });
                 }
             }
