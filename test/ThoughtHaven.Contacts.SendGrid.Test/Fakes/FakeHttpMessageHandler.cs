@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ThoughtHaven.Messages.Emails.SendGrid.Fakes
+namespace ThoughtHaven.Contacts.SendGrid.Fakes
 {
     public class FakeHttpMessageHandler : HttpMessageHandler
     {

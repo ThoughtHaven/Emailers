@@ -3,7 +3,7 @@ using SendGrid.Helpers.Mail;
 using System;
 using System.Threading.Tasks;
 
-namespace ThoughtHaven.Messages.Emails.SendGrid
+namespace ThoughtHaven.Contacts.SendGrid
 {
     public class SendGridEmailService : IEmailService
     {

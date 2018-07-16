@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection.Extensions;
 using ThoughtHaven;
-using ThoughtHaven.Messages.Emails;
-using ThoughtHaven.Messages.Emails.SendGrid;
+using ThoughtHaven.Contacts;
+using ThoughtHaven.Contacts.SendGrid;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

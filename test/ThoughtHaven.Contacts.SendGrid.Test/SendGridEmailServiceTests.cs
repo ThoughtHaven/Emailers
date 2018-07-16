@@ -2,10 +2,10 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using ThoughtHaven.Messages.Emails.SendGrid.Fakes;
+using ThoughtHaven.Contacts.SendGrid.Fakes;
 using Xunit;
 
-namespace ThoughtHaven.Messages.Emails.SendGrid
+namespace ThoughtHaven.Contacts.SendGrid
 {
     public class SendGridEmailServiceTests
     {
@@ -179,7 +179,8 @@ namespace ThoughtHaven.Messages.Emails.SendGrid
         }
 
         private static FakeHttpMessageHandler Handler() => new FakeHttpMessageHandler();
-        private static FakeSendGridEmailService Service(FakeHttpMessageHandler handler = null) =>
+        private static FakeSendGridEmailService Service(
+            FakeHttpMessageHandler handler = null) =>
             new FakeSendGridEmailService(handler ?? Handler());
         private static EmailMessage Message() =>
             new EmailMessage(new EmailContact("from@email.com"),

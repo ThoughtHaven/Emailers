@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using Xunit;
-using ThoughtHaven.Messages.Emails;
-using ThoughtHaven.Messages.Emails.SendGrid;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace ThoughtHaven.Contacts.SendGrid.DependencyInjection
 {
     public class SendGridServiceCollectionExtensionsTests
     {

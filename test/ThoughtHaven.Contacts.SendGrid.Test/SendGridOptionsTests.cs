@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace ThoughtHaven.Messages.Emails.SendGrid
+namespace ThoughtHaven.Contacts.SendGrid
 {
     public class SendGridOptionsTests
     {

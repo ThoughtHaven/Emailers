@@ -1,7 +1,7 @@
 ﻿using SendGrid;
 using System.Net.Http;
 
-namespace ThoughtHaven.Messages.Emails.SendGrid.Fakes
+namespace ThoughtHaven.Contacts.SendGrid.Fakes
 {
     public class FakeSendGridEmailService : SendGridEmailService
     {

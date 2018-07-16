@@ -1,4 +1,4 @@
-﻿namespace ThoughtHaven.Messages.Emails.SendGrid
+﻿namespace ThoughtHaven.Contacts.SendGrid
 {
     public class SendGridOptions
     {
@@ -6,7 +6,7 @@
         public string ApiKey
         {
             get => this._apiKey;
-            set { this._apiKey = Guard.NullOrWhiteSpace(nameof(value), value); }
+            set => this._apiKey = Guard.NullOrWhiteSpace(nameof(value), value);
         }
 
         public SendGridOptions(string apiKey)
