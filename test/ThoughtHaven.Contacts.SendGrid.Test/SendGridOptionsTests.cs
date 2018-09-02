@@ -3,7 +3,7 @@ using Xunit;
 
 namespace ThoughtHaven.Contacts.SendGrid
 {
-    public class SendGridConfigurationTests
+    public class SendGridOptionsTests
     {
         public class Constructor
         {
@@ -14,7 +14,7 @@ namespace ThoughtHaven.Contacts.SendGrid
                 {
                     Assert.Throws<ArgumentNullException>("apiKey", () =>
                     {
-                        new SendGridConfiguration(apiKey: null);
+                        new SendGridOptions(apiKey: null);
                     });
                 }
 
@@ -23,7 +23,7 @@ namespace ThoughtHaven.Contacts.SendGrid
                 {
                     Assert.Throws<ArgumentException>("apiKey", () =>
                     {
-                        new SendGridConfiguration(apiKey: "");
+                        new SendGridOptions(apiKey: "");
                     });
                 }
 
@@ -32,14 +32,14 @@ namespace ThoughtHaven.Contacts.SendGrid
                 {
                     Assert.Throws<ArgumentException>("apiKey", () =>
                     {
-                        new SendGridConfiguration(apiKey: " ");
+                        new SendGridOptions(apiKey: " ");
                     });
                 }
 
                 [Fact]
                 public void WhenCalled_SetsApiKey()
                 {
-                    var options = new SendGridConfiguration("key");
+                    var options = new SendGridOptions("key");
 
                     Assert.Equal("key", options.ApiKey);
                 }

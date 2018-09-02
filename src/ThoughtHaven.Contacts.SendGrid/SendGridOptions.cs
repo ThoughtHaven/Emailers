@@ -1,10 +1,10 @@
 ﻿namespace ThoughtHaven.Contacts.SendGrid
 {
-    public class SendGridConfiguration
+    public class SendGridOptions
     {
         public string ApiKey { get; }
 
-        public SendGridConfiguration(string apiKey)
+        public SendGridOptions(string apiKey)
         {
             this.ApiKey = Guard.NullOrWhiteSpace(nameof(apiKey), apiKey);
         }

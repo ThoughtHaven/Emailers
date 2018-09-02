@@ -7,11 +7,11 @@ namespace ThoughtHaven.Contacts.SendGrid
 {
     public class SendGridEmailService : IEmailService
     {
-        protected SendGridConfiguration Configuration { get; }
+        protected SendGridOptions Options { get; }
 
-        public SendGridEmailService(SendGridConfiguration configuration)
+        public SendGridEmailService(SendGridOptions options)
         {
-            this.Configuration = Guard.Null(nameof(configuration), configuration);
+            this.Options = Guard.Null(nameof(options), options);
         }
 
         public async Task Send(EmailMessage message)
@@ -42,6 +42,6 @@ namespace ThoughtHaven.Contacts.SendGrid
         }
 
         protected virtual SendGridClient CreateClient() =>
-            new SendGridClient(this.Configuration.ApiKey);
+            new SendGridClient(this.Options.ApiKey);
     }
 }

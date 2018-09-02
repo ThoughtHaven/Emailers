@@ -8,12 +8,12 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class SendGridServiceCollectionExtensions
     {
         public static IServiceCollection AddSendGrid(this IServiceCollection services,
-            SendGridConfiguration configuration)
+            SendGridOptions options)
         {
             Guard.Null(nameof(services), services);
-            Guard.Null(nameof(configuration), configuration);
+            Guard.Null(nameof(options), options);
 
-            services.TryAddSingleton(configuration);
+            services.TryAddSingleton(options);
             services.TryAddSingleton<IEmailService, SendGridEmailService>();
 
             return services;
