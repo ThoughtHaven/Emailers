@@ -8,7 +8,7 @@ namespace ThoughtHaven.Contacts.SendGrid.DependencyInjection
     {
         public class AddSendGridMethod
         {
-            public class ServicesAndOptionsOverload
+            public class ServicesAndConfigurationOverload
             {
                 [Fact]
                 public void NullServices_Throws()
@@ -17,17 +17,31 @@ namespace ThoughtHaven.Contacts.SendGrid.DependencyInjection
 
                     Assert.Throws<ArgumentNullException>("services", () =>
                     {
-                        services.AddSendGrid(Options());
+                        services.AddSendGrid(Configuration());
                     });
                 }
 
                 [Fact]
-                public void NullOptions_Throws()
+                public void NullConfiguration_Throws()
                 {
-                    Assert.Throws<ArgumentNullException>("options", () =>
+                    Assert.Throws<ArgumentNullException>("configuration", () =>
                     {
-                        new ServiceCollection().AddSendGrid(options: null);
+                        new ServiceCollection().AddSendGrid(configuration: null);
                     });
+                }
+
+                [Fact]
+                public void WhenCalled_AddsSendGridConfiguration()
+                {
+                    var services = new ServiceCollection();
+                    var configuration = Configuration();
+
+                    services.AddSendGrid(configuration);
+
+                    var service = services.BuildServiceProvider()
+                        .GetRequiredService<SendGridConfiguration>();
+
+                    Assert.Equal(configuration, service);
                 }
 
                 [Fact]
@@ -35,13 +49,12 @@ namespace ThoughtHaven.Contacts.SendGrid.DependencyInjection
                 {
                     var services = new ServiceCollection();
 
-                    services.AddSendGrid(Options());
+                    services.AddSendGrid(Configuration());
 
                     var service = services.BuildServiceProvider()
                         .GetRequiredService<IEmailService>();
 
-                    Assert.NotNull(service);
-                    Assert.True(service is SendGridEmailService);
+                    Assert.IsType<SendGridEmailService>(service);
                 }
 
                 [Fact]
@@ -49,13 +62,14 @@ namespace ThoughtHaven.Contacts.SendGrid.DependencyInjection
                 {
                     var services = new ServiceCollection();
 
-                    var result = services.AddSendGrid(Options());
+                    var result = services.AddSendGrid(Configuration());
 
                     Assert.Equal(services, result);
                 }
             }
         }
 
-        private static SendGridOptions Options() => new SendGridOptions("key");
+        private static SendGridConfiguration Configuration() =>
+            new SendGridConfiguration("key");
     }
 }

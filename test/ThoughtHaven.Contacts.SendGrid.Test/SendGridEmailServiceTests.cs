@@ -11,14 +11,14 @@ namespace ThoughtHaven.Contacts.SendGrid
     {
         public class Constructor
         {
-            public class OptionsOverload
+            public class ConfigurationOverload
             {
                 [Fact]
                 public void NullOptions_Throws()
                 {
-                    Assert.Throws<ArgumentNullException>("options", () =>
+                    Assert.Throws<ArgumentNullException>("configuration", () =>
                     {
-                        new SendGridEmailService(options: null);
+                        new SendGridEmailService(configuration: null);
                     });
                 }
             }

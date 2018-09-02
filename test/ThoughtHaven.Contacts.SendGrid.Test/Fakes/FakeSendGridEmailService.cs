@@ -8,10 +8,10 @@ namespace ThoughtHaven.Contacts.SendGrid.Fakes
         public SendGridClient Client { get; }
 
         public FakeSendGridEmailService(FakeHttpMessageHandler handler)
-            : base(options: new SendGridOptions("fake"))
+            : base(configuration: new SendGridConfiguration("fake"))
         {
             this.Client = new SendGridClient(new HttpClient(handler),
-                apiKey: base.Options.ApiKey);
+                apiKey: base.Configuration.ApiKey);
         }
 
         protected override SendGridClient CreateClient() => this.Client;
