@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
-    <Version>0.102.0</Version>
+    <Version>0.102.1</Version>
     <Authors>Thought Haven, Brendan Ridenour</Authors>
     <Company>Thought Haven</Company>
     <Description>A SendGrid implementation of Thought Haven's email service abstractions.</Description>
@@ -12,8 +12,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.1" />
-    <PackageReference Include="Sendgrid" Version="9.9.0" />
-    <PackageReference Include="ThoughtHaven.Core" Version="0.103.0" />
+    <PackageReference Include="Sendgrid" Version="9.10.0" />
+    <PackageReference Include="ThoughtHaven.Core" Version="0.103.1" />
   </ItemGroup>
 
 </Project>
