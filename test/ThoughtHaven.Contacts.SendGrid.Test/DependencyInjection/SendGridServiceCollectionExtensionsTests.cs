@@ -13,7 +13,7 @@ namespace ThoughtHaven.Contacts.SendGrid.DependencyInjection
                 [Fact]
                 public void NullServices_Throws()
                 {
-                    IServiceCollection services = null;
+                    IServiceCollection services = null!;
 
                     Assert.Throws<ArgumentNullException>("services", () =>
                     {
@@ -26,7 +26,7 @@ namespace ThoughtHaven.Contacts.SendGrid.DependencyInjection
                 {
                     Assert.Throws<ArgumentNullException>("options", () =>
                     {
-                        new ServiceCollection().AddSendGrid(options: null);
+                        new ServiceCollection().AddSendGrid(options: null!);
                     });
                 }
 
