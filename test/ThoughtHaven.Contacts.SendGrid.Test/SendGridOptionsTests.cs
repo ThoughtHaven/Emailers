@@ -14,7 +14,7 @@ namespace ThoughtHaven.Contacts.SendGrid
                 {
                     Assert.Throws<ArgumentNullException>("apiKey", () =>
                     {
-                        new SendGridOptions(apiKey: null);
+                        new SendGridOptions(apiKey: null!);
                     });
                 }
 

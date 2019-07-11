@@ -18,7 +18,7 @@ namespace ThoughtHaven.Contacts.SendGrid
                 {
                     Assert.Throws<ArgumentNullException>("options", () =>
                     {
-                        new SendGridEmailService(options: null);
+                        new SendGridEmailService(options: null!);
                     });
                 }
             }
@@ -33,7 +33,7 @@ namespace ThoughtHaven.Contacts.SendGrid
                 {
                     await Assert.ThrowsAsync<ArgumentNullException>("message", async () =>
                     {
-                        await Service().Send(message: null);
+                        await Service().Send(message: null!);
                     });
                 }
 
@@ -54,7 +54,7 @@ namespace ThoughtHaven.Contacts.SendGrid
 
                     await Service(handler).Send(Message());
 
-                    var content = await handler.SendAsync_InputRequest.Content
+                    var content = await handler.SendAsync_InputRequest!.Content
                         .ReadAsStringAsync();
 
                     Assert.Contains("\"from\":{\"email\":\"from@email.com\"}", content);
@@ -67,7 +67,7 @@ namespace ThoughtHaven.Contacts.SendGrid
 
                     await Service(handler).Send(Message());
 
-                    var content = await handler.SendAsync_InputRequest.Content
+                    var content = await handler.SendAsync_InputRequest!.Content
                         .ReadAsStringAsync();
 
                     Assert.Contains("\"subject\":\"subject\"", content);
@@ -80,7 +80,7 @@ namespace ThoughtHaven.Contacts.SendGrid
 
                     await Service(handler).Send(Message());
 
-                    var content = await handler.SendAsync_InputRequest.Content
+                    var content = await handler.SendAsync_InputRequest!.Content
                         .ReadAsStringAsync();
 
                     Assert.Contains("\"to\":[{\"email\":\"to@email.com\"}]", content);
@@ -99,7 +99,7 @@ namespace ThoughtHaven.Contacts.SendGrid
 
                     await Service(handler).Send(message);
 
-                    var content = await handler.SendAsync_InputRequest.Content
+                    var content = await handler.SendAsync_InputRequest!.Content
                         .ReadAsStringAsync();
 
                     Assert.Contains("\"to\":[{\"email\":\"to1@email.com\"},{\"email\":\"to2@email.com\"}]", content);
@@ -112,7 +112,7 @@ namespace ThoughtHaven.Contacts.SendGrid
 
                     await Service(handler).Send(Message());
 
-                    var content = await handler.SendAsync_InputRequest.Content
+                    var content = await handler.SendAsync_InputRequest!.Content
                         .ReadAsStringAsync();
 
                     Assert.Contains("\"content\":[{\"type\":\"text/plain\",\"value\":\"pt\"}]",
@@ -133,7 +133,7 @@ namespace ThoughtHaven.Contacts.SendGrid
 
                     await Service(handler).Send(message);
 
-                    var content = await handler.SendAsync_InputRequest.Content
+                    var content = await handler.SendAsync_InputRequest!.Content
                         .ReadAsStringAsync();
 
                     Assert.Contains("\"content\":[{\"type\":\"text/plain\",\"value\":\"pt\"},{\"type\":\"text/html\",\"value\":\"html\"}]",
@@ -180,7 +180,7 @@ namespace ThoughtHaven.Contacts.SendGrid
 
         private static FakeHttpMessageHandler Handler() => new FakeHttpMessageHandler();
         private static FakeSendGridEmailService Service(
-            FakeHttpMessageHandler handler = null) =>
+            FakeHttpMessageHandler? handler = null) =>
             new FakeSendGridEmailService(handler ?? Handler());
         private static EmailMessage Message() =>
             new EmailMessage(new EmailContact("from@email.com"),
